@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/IoTSenseHat.iml" filepath="$PROJECT_DIR$/IoTSenseHat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../contrib-drivers/hts221/hts221.iml" filepath="$PROJECT_DIR$/../contrib-drivers/hts221/hts221.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../contrib-drivers/lps25h/lps25h.iml" filepath="$PROJECT_DIR$/../contrib-drivers/lps25h/lps25h.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../contrib-drivers/sensehat/sensehat.iml" filepath="$PROJECT_DIR$/../contrib-drivers/sensehat/sensehat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../contrib-drivers/testingutils/testingutils.iml" filepath="$PROJECT_DIR$/../contrib-drivers/testingutils/testingutils.iml" />
+    </modules>
+  </component>
+</project>

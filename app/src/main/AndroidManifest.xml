@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.justif.iotsensehat">
+
+    <uses-permission android:name="com.google.android.things.permission.MANAGE_SENSOR_DRIVERS" />
+
+    <application>
+        <uses-library android:name="com.google.android.things" />
+
+        <service android:name=".SenseHatService"></service>
+        <service
+            android:name="de.justif.iotsensehat.cloud.CloudPublisherService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.androidthings.sensorhub.mqtt.CONFIGURE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.IOT_LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

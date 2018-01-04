@@ -1,0 +1,9 @@
+include ":app"
+include ":sensehat"
+include ":hts221"
+include ":lps25h"
+include ":testingutils"
+project(":sensehat").projectDir = file("../contrib-drivers/sensehat")
+project(":hts221").projectDir = file("../contrib-drivers/hts221")
+project(":lps25h").projectDir = file("../contrib-drivers/lps25h")
+project(":testingutils").projectDir = file("../contrib-drivers/testingutils")
