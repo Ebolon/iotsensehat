@@ -20,10 +20,6 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import de.justif.iotsensehat.SensorData;
-import de.justif.iotsensehat.cloud.CloudPublisher;
-import de.justif.iotsensehat.cloud.MessagePayload;
-
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -37,6 +33,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import de.justif.iotsensehat.SensorData;
+import de.justif.iotsensehat.cloud.CloudPublisher;
+import de.justif.iotsensehat.cloud.MessagePayload;
 
 /**
  * Handle publishing sensor data to a Cloud IoT MQTT endpoint.
@@ -85,10 +85,10 @@ public class MQTTPublisher implements CloudPublisher {
             Log.w(TAG, "Postponing initialization, since CloudIotOptions is incomplete. " +
                 "Please configure via intent, for example: \n" +
                 "adb shell am startservice -a " +
-                "com.example.androidthings.sensorhub.mqtt.CONFIGURE " +
+                "de.justif.iotsensehat.mqtt.CONFIGURE " +
                 "-e project_id <PROJECT_ID> -e cloud_region <REGION> " +
                 "-e registry_id <REGISTRY_ID> -e device_id <DEVICE_ID> " +
-                "com.example.androidthings.sensorhub/.cloud.CloudPublisherService\n");
+                "de.justif.iotsensehat/.cloud.CloudPublisherService\n");
             return;
         }
         try {
@@ -105,6 +105,7 @@ public class MQTTPublisher implements CloudPublisher {
             mqttAuth.initialize();
             if( Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
                 try {
+                    Log.i(TAG, "Exporting cert to: " + Environment.getExternalStorageDirectory());
                     mqttAuth.exportPublicKey(new File(Environment.getExternalStorageDirectory(),
                         "cloud_iot_auth_certificate.pem"));
                 } catch (GeneralSecurityException | IOException e) {

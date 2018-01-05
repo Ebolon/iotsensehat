@@ -26,10 +26,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
 
-import de.justif.iotsensehat.SensorData;
-import de.justif.iotsensehat.cloud.cloudiot.CloudIotOptions;
-import de.justif.iotsensehat.cloud.cloudiot.MQTTPublisher;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -38,6 +34,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import de.justif.iotsensehat.SensorData;
+import de.justif.iotsensehat.cloud.cloudiot.CloudIotOptions;
+import de.justif.iotsensehat.cloud.cloudiot.MQTTPublisher;
 
 /**
  * Handle asynchronous cloud sensor logging requests via a Binder interface. Sensor events are
@@ -48,7 +48,7 @@ public class CloudPublisherService extends Service {
     private static final String TAG = " CloudPublisherService";
 
     private static final String INTENT_CONFIGURE_ACTION =
-            "com.example.androidthings.sensorhub.mqtt.CONFIGURE";
+            "de.justif.iotsensehat.mqtt.CONFIGURE";
     private static final String CONFIG_SHARED_PREFERENCES_KEY = "cloud_iot_config";
 
     // Will store at most this amount of most recent sensor change events, per sensor type

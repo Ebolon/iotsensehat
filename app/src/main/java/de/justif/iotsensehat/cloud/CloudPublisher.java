@@ -16,10 +16,10 @@
 
 package de.justif.iotsensehat.cloud;
 
+import java.util.List;
+
 import de.justif.iotsensehat.SensorData;
 import de.justif.iotsensehat.cloud.cloudiot.CloudIotOptions;
-
-import java.util.List;
 
 public interface CloudPublisher extends AutoCloseable {
 

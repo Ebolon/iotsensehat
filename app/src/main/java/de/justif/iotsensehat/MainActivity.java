@@ -1,50 +1,39 @@
 package de.justif.iotsensehat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-import android.hardware.SensorManager.DynamicSensorCallback;
-import android.content.Intent;
 
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private SensorManager mSensorManager;
-    private DynamicSensorCallback mDynamicSensorCallback = new DynamicSensorCallback() {
-        @Override
-        public void onDynamicSensorConnected(Sensor sensor) {
-
-            Log.i(TAG, sensor.getStringType());
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG, "Starting MainActivity");
         super.onCreate(savedInstanceState);
-        startSenseHatService();
+        Log.i(TAG, "Starting MainActivity");
+        startServices();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopSenseHatService();
+        stopServices();
     }
 
-    private void startSenseHatService() {
+
+
+    private void startServices() {
+
         this.startService(new Intent(this, SenseHatService.class));
-        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        mSensorManager.registerDynamicSensorCallback(mDynamicSensorCallback);
+
     }
 
-    private void stopSenseHatService() {
+    private void stopServices() {
+
         this.stopService(new Intent(this, SenseHatService.class));
-        mSensorManager.unregisterDynamicSensorCallback(mDynamicSensorCallback);
-
     }
+
 
 
 }
