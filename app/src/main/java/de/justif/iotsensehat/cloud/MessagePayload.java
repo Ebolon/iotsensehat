@@ -15,13 +15,13 @@
  */
 package de.justif.iotsensehat.cloud;
 
-import de.justif.iotsensehat.SensorData;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+
+import de.justif.iotsensehat.SensorData;
 
 /**
  * This class handles the serialization of the SensorData objects into a String
@@ -39,9 +39,10 @@ public class MessagePayload {
             JSONArray dataArray = new JSONArray();
             for (SensorData el : data) {
                 JSONObject sensor = new JSONObject();
-                sensor.put("timestamp_" + el.getSensorName(),
+                sensor.put("timestamp",
                     el.getTimestamp());
-                sensor.put(el.getSensorName(), el.getValue());
+                sensor.put("sensorName", el.getSensorName());
+                sensor.put("value", el.getValue());
                 dataArray.put(sensor);
             }
             messagePayload.put("data", dataArray);
